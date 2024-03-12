@@ -35,6 +35,9 @@ createApp({
             if (this.activeImg === this.series.images.length) {
                 this.activeImg = 0;
             }
-        }
+        },
+    },
+    mounted(){
+        setInterval(this.next, 3000);
     }
 }).mount('#app')
