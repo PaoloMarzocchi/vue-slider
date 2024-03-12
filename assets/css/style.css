@@ -86,6 +86,7 @@ h1{
 
             & img {
                 height: calc(100% /6);
+                cursor: pointer;
             }
         }
     }

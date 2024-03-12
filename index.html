@@ -17,7 +17,7 @@
             </div>
             <div class="list_img">
                 <div class="thumbs">
-                    <img :src="image" alt="" v-for="image in series.images">
+                    <img :src="image" alt="" v-for="(image,index) in series.images" @click="activeImg = index">
                 </div>
                 <button class="up" @click="prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
