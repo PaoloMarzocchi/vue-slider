@@ -10,20 +10,16 @@
     
     
     <div id="app">
+        <h1>{{series.title}}</h1>
         <div class="slider">
             <div class="current_img">
-                <img src="./assets/img/01.jpg" alt="">
+                <img :src="series.images[activeImg]" alt="">
             </div>
             <div class="list_img">
-                <div class="carousel">
-                    <img src="./assets/img/01.jpg" alt="">
-                    <img src="./assets/img/02.jpg" alt="">
-                    <img src="./assets/img/03.jpg" alt="">
-                    <img src="./assets/img/04.jpg" alt="">
-                    <img src="./assets/img/05.jpg" alt="">
-                    <img src="./assets/img/06.jpg" alt="">
+                <div class="thumbs">
+                    <img :src="image" alt="" v-for="image in series.images">
                 </div>
-                <button class="up">
+                <button class="up" @click="prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-chevron-double-up" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -32,7 +28,7 @@
                             d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708z" />
                     </svg>
                 </button>
-                <button class="down">
+                <button class="down" @click="next">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-chevron-double-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -43,6 +39,11 @@
                 </button>
             </div>
         </div>
+        <ul>
+            <li>Genre : {{series.genre}}</li>
+            <li>N° Seasons : {{series.numbSeasons}}</li>
+            <li>Created by : {{series.creators}}</li>
+        </ul>
     </div>
     
     
