@@ -3,8 +3,9 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            interval: null,
             activeImg: 0,
-            series:{
+            series: {
                 title: 'Rick and Morty',
                 genre: 'Animated Fiction',
                 numbSeasons: 7,
@@ -21,23 +22,29 @@ createApp({
         }
     },
     methods: {
-        prev(){
+        prev() {
             this.activeImg--;
-            
 
-            if(this.activeImg < 0){
+
+            if (this.activeImg < 0) {
                 this.activeImg = this.series.images.length - 1;
             }
         },
-        next(){
+        next() {
             this.activeImg++;
-            
+
             if (this.activeImg === this.series.images.length) {
                 this.activeImg = 0;
             }
         },
+        startAutoplay(){
+            this.interval = setInterval(this.next, 3000);
+        },
+        stopAutoplay(){
+            clearInterval(this.interval);
+        }
     },
-    mounted(){
-        setInterval(this.next, 3000);
+    mounted() {
+        this.startAutoplay();
     }
 }).mount('#app')

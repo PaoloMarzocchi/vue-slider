@@ -10,15 +10,22 @@
     
     
     <div id="app">
+        
         <h1>{{series.title}}</h1>
-        <div class="slider">
-            <div class="current_img">
+
+        <!-- Image active section -->
+        <div class="slider" @mouseover="stopAutoplay()" @mouseout="startAutoplay()">
+            <div class="current_img">   
                 <img :src="series.images[activeImg]" alt="">
             </div>
+
+            <!-- Thumbnails -->
             <div class="list_img">
                 <div class="thumbs">
-                    <img :src="image" alt="" v-for="(image,index) in series.images" @click="activeImg = index">
+                    <img :src="image" alt="" v-for="(image,index) in series.images" :class="(activeImg === index) ? 'shown' : 'unshown'" @click="activeImg = index">
                 </div>
+
+                <!-- Slider buttons -->
                 <button class="up" @click="prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-chevron-double-up" viewBox="0 0 16 16">
@@ -39,6 +46,8 @@
                 </button>
             </div>
         </div>
+
+        <!-- Description -->
         <ul>
             <li>Genre : {{series.genre}}</li>
             <li>N° Seasons : {{series.numbSeasons}}</li>
